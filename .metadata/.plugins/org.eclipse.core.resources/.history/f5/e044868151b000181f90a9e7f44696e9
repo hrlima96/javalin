@@ -1,0 +1,38 @@
+package todo;
+
+import io.javalin.Context;
+import io.javalin.apibuilder.CrudHandler;
+
+public class ToDoController implements CrudHandler {
+
+	@Override
+	public void create(Context arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Context arg0, String arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getAll(Context arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getOne(Context arg0, String arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Context arg0, String arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

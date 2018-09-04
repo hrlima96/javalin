@@ -1,0 +1,18 @@
+package todo;
+
+import java.sql.SQLException;
+
+import app.ToDo;
+import app.ToDoDAO;
+import io.javalin.Context;
+import io.javalin.apibuilder.CrudHandler;
+
+public class ToDoController implements CrudHandler{
+
+	public static void create(Context ctx) throws ClassNotFoundException, SQLException {
+		ToDo todo = ctx.bodyAsClass(ToDo.class);
+		
+		ToDoDAO dao = new ToDoDAO();
+		dao.inserir(todo);
+	}
+}

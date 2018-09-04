@@ -1,0 +1,14 @@
+package app;
+
+import io.javalin.Javalin;
+import todo.ToDoController;
+
+public class Application {
+	public static void main(String[] args) {
+        Javalin app = Javalin.create().start(3000);
+        
+        app.routes(() -> {
+            crud("users/:user-id", new ToDoController());
+        });
+    }
+}

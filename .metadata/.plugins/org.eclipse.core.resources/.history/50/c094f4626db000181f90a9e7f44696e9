@@ -1,0 +1,25 @@
+package todo;
+
+import java.sql.SQLException;
+import java.util.Collection;
+
+import app.ToDo;
+import app.ToDoDAO;
+import io.javalin.Context;
+
+public class ToDoController {
+
+	public static Collection<ToDo> getAll(Context ctx) throws ClassNotFoundException, SQLException {
+		ToDo todo = ctx.bodyAsClass(ToDo.class);
+		
+		ToDoDAO dao = new ToDoDAO();
+		dao.inserir(todo);
+	}
+	
+	public static void create(Context ctx) throws ClassNotFoundException, SQLException {
+		ToDo todo = ctx.bodyAsClass(ToDo.class);
+		
+		ToDoDAO dao = new ToDoDAO();
+		dao.inserir(todo);
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 2 elements to &apos;javalin/src/main/java/app&apos;&#x0A;- Original project: &apos;todo&apos;&#x0A;- Destination element: &apos;javalin/src/main/java/app&apos;&#x0A;- Original elements:&#x0A;     todo.ToDoDAO.java&#x0A;     todo.ToDo.java&#x0A;- Update references to refactored element" description="Move compilation units" destination="=javalin/src\/main\/java&lt;app" element1="/src\/main\/java&lt;todo{ToDoDAO.java" element2="/src\/main\/java&lt;todo{ToDo.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1536067395486" units="2" version="1.0"/>
+</session>

@@ -1,0 +1,19 @@
+package app;
+
+import io.javalin.Javalin;
+import io.javalin.apibuilder.CrudHandler;
+import todo.ToDoController;
+
+public class Application implements CrudHandler {
+	public static void main(String[] args) {
+        Javalin app = Javalin.create().start(3000);
+        
+        app.get("/todos", ToDoController::getAll);
+        app.post("/todos", ToDoController::create);
+        
+        app.routes(() -> {
+            crud("users/:user-id", new ToDoController());
+        });
+
+    }
+}

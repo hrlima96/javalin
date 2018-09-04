@@ -1,0 +1,11 @@
+package todo;
+
+import app.ToDo;
+import io.javalin.Context;
+
+public class ToDoController {
+
+	public static void create(Context ctx) {
+		ToDo todo = ctx.bodyAsClass(ToDo.class);
+	}
+}

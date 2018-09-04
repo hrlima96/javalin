@@ -1,0 +1,10 @@
+package todo;
+
+import io.javalin.Context;
+
+public class ToDoController {
+
+	public static void create(Context ctx) {
+		
+	}
+}

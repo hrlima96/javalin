@@ -1,0 +1,19 @@
+package todo;
+
+import java.sql.SQLException;
+
+public class Teste {
+	 public static void main(String[] args) {
+	        try {
+				var todoDAO = new ToDoDAO();
+				Integer r = todoDAO.inserir(new ToDo("oie", "test teste teste texto"));
+				System.out.println(r);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+}

@@ -1,0 +1,68 @@
+package app;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class ToDoDAO {
+	private Connection connection;
+	private PreparedStatement stmt;
+
+	public ToDoDAO() throws SQLException, ClassNotFoundException {
+		Class.forName("org.sqlite.JDBC");
+		connection = DriverManager.getConnection("jdbc:sqlite:todo.db");
+	}
+	
+	public ToDo buscar(String id) {
+		try {
+			this.stmt = this.connection.prepareStatement("SELECT * FROM todo where id = ?");
+			this.stmt.setInt(1, id);
+			ResultSet rows = this.stmt.executeQuery();
+			
+			return getTodo(rows);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Collection<ToDo> buscarTodos() {
+		try {
+			this.stmt = this.connection.prepareStatement("SELECT * FROM todo");
+			ResultSet rows = this.stmt.executeQuery();
+			
+			return getCollection(rows);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public Integer inserir(ToDo todo) {
+		try {
+			
+			this.stmt = this.connection.prepareStatement("INSERT INTO todo(titulo, descricao) VALUES(?, ?)");
+			this.stmt.setString(1, todo.getTitulo());
+			this.stmt.setString(2, todo.getDescricao());
+			int rows = this.stmt.executeUpdate();
+			
+			return rows;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	private ToDo getTodo(ResultSet rs) throws SQLException {
+		return new ToDo(rs.getLong("id"), rs.getString("titulo"), rs.getString("descricao"));
+	}
+	
+	private Collection<ToDo> getCollection(ResultSet rs) throws SQLException {
+		Collection<ToDo> r = new ArrayList<ToDo>();
+		while(rs.next()) {
+			r.add(getTodo(rs));
+		}
+		
+		return r;
+	}
+}

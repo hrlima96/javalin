@@ -1,0 +1,12 @@
+package todo;
+
+import io.javalin.Context;
+import io.javalin.apibuilder.CrudHandler;
+
+public class ToDoController {
+
+	public static void create(Context ctx) {
+		ctx.bodyAsClass()
+		
+	}
+}
