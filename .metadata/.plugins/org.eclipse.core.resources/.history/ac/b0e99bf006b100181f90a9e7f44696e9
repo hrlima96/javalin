@@ -1,0 +1,20 @@
+package br.com.hugo.spring.todo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping("/todos")
+public class ToDoController {
+	@ResponseBody
+	@RequestMapping(value="", method = RequestMethod.GET)
+	public ResponseEntity<Collection<ToD>> excluirPorIdEventoPorUsuario(
+			@PathVariable(value="idEvento") Long idEvento, 
+			@PathVariable(value="nrMatricula") Integer nrMatricula,
+			@PathVariable(value="cdEstabelecimento") Integer cdEstabelecimento) {
+		alertaService.excluirPorIdEventoPorUsuario(idEvento, nrMatricula, cdEstabelecimento);
+		return new ResponseEntity(HttpStatus.OK);
+	}
+}

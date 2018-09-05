@@ -45,12 +45,4 @@ public class ToDoController {
 		ToDoDAO dao = new ToDoDAO();
 		return new ResponseEntity<Integer>(dao.inserir(todo), HttpStatus.OK);
 	}
-	
-	@ResponseBody
-	@RequestMapping(value="/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Integer> delete(@PathVariable String id) throws ClassNotFoundException, SQLException {
-		ToDoDAO dao = new ToDoDAO();
-		dao.apagar(id);
-		return new ResponseEntity<Integer>(HttpStatus.OK);
-	}
 }

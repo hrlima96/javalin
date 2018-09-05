@@ -1,0 +1,33 @@
+package br.com.hugo.spring.todo;
+
+import java.sql.SQLException;
+import java.util.Collection;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import app.ToDo;
+import app.ToDoDAO;
+
+@Controller
+@RequestMapping("/todos")
+public class ToDoController {
+	@ResponseBody
+	@RequestMapping(value="", method = RequestMethod.GET)
+	public ResponseEntity<Collection<ToDo>> getAll() throws ClassNotFoundException, SQLException {
+		ToDoDAO dao = new ToDoDAO();
+		return new ResponseEntity<Collection<ToDo>>(dao.buscarTodos(), HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ToDo> getOne(@PathVariable(value="id")Long id) throws ClassNotFoundException, SQLException {
+		ToDoDAO dao = new ToDoDAO();
+		return new ResponseEntity<Collection<ToDo>>(dao.buscarTodos(), HttpStatus.OK);
+	}
+}

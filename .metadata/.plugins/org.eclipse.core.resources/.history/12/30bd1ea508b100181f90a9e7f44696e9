@@ -34,23 +34,8 @@ public class ToDoController {
 	
 	@ResponseBody
 	@RequestMapping(value="", method = RequestMethod.PATCH)
-	public ResponseEntity<Integer> update(@RequestBody ToDo todo) throws ClassNotFoundException, SQLException {
+	public ResponseEntity<ToDo> update(@RequestBody ToDo todo) throws ClassNotFoundException, SQLException {
 		ToDoDAO dao = new ToDoDAO();
-		return new ResponseEntity<Integer>(dao.atualizar(todo), HttpStatus.OK);
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="", method = RequestMethod.POST)
-	public ResponseEntity<Integer> create(@RequestBody ToDo todo) throws ClassNotFoundException, SQLException {
-		ToDoDAO dao = new ToDoDAO();
-		return new ResponseEntity<Integer>(dao.inserir(todo), HttpStatus.OK);
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Integer> delete(@PathVariable String id) throws ClassNotFoundException, SQLException {
-		ToDoDAO dao = new ToDoDAO();
-		dao.apagar(id);
-		return new ResponseEntity<Integer>(HttpStatus.OK);
+		return new ResponseEntity<ToDo>(dao.atualizar(todo), HttpStatus.OK);
 	}
 }
